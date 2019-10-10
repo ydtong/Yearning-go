@@ -1,0 +1,11 @@
+[Mysql]
+Db = "Yearning_go"
+Host = "127.0.0.1"
+Port = "3306"
+Password = "19931003"
+User = "root"
+
+[General]
+
+Host = "127.0.0.1:8080"
+SecretKey = "u)zall!ag&mci+ja5u&-6*1e^ufyu)l4i8+^=mw$845@k!ie+3.txt"

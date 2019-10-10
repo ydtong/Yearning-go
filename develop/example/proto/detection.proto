@@ -1,0 +1,45 @@
+syntax = "proto3";
+package proto;
+
+
+message LibraAuditOrder {
+    string SQL = 1;
+    string DataBase = 2;
+    string Table = 3;
+    bool Execute = 4;
+    bool Check = 5;
+    bool IsDML = 6;
+    bool Backup = 7;
+    Source source = 8;
+    string WorkId = 9;
+
+}
+
+message Source {
+    string Addr = 1;
+    string User = 2;
+    string Password = 3;
+    int32 Port = 4;
+}
+
+message Record {
+    string SQL = 1;
+    int32 AffectRows = 2;
+    string Status = 3;
+    string Error = 4;
+    int32 Level = 6;
+}
+
+message RecordSet {
+    repeated Record record = 1;
+}
+
+message ExecOrder {
+    string Message = 1;
+}
+
+service Juno {
+    rpc OrderDeal (LibraAuditOrder) returns (RecordSet) {}
+    rpc OrderDMLExec (LibraAuditOrder) returns (ExecOrder) {}
+    rpc OrderDDLExec (LibraAuditOrder) returns (ExecOrder) {}
+}
